@@ -35,7 +35,7 @@ body {
 	margin: auto;
 	padding: 20px;
 	border: 1px solid #888;
-	width: 80%;
+	width: 50%;
 }
 
 /* The Close Button */
@@ -53,6 +53,8 @@ body {
 }
 </style>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </head>
 <body>
 
@@ -65,13 +67,17 @@ body {
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close">&times;</span>
-			First Name : <input type="text" name="firstName" /> <br/>
-			Last Name  : <input type="text" name="lastName" /> <br/>
-			State : <input type="text" name="state" /> <br/>
-			City : <input type="text" name="city" /> <br/>
-			Email : <input type="text" name="email" /> <br/>
-			
-			<button type="submit">Save</button>
+			<center>
+			<table>
+				<tr><td align="right">First Name:</td><td><input type="text" name="firstName" /></td></tr>
+				<tr><td align="right">Last Name:</td><td><input type="text" name="lastName" /></td></tr>
+				<tr><td align="right">State:</td><td><input type="text" name="state" /></td></tr>
+				<tr><td align="right">City:</td><td><input type="text" name="city" /></td></tr>
+				<tr><td align="right">Email:</td><td><input type="text" name="email" /></td></tr>
+			</table>
+			</center>
+			<br/>	
+			<center><button type="submit">Save</button></center>
 		</div>
 
 	</div>
@@ -112,12 +118,19 @@ body {
 	<br/>
 	User Search
 	<br />
-	<br /> First Name:*
-	<input type="text" name="sFirstName" />
-	<br /> Last Name:*
-	<input type="text" name="sLastName" />
-	<br /> Email:*
-	<input type="text" name="sEmail">
+	<br />
+	<table>
+		<tr>
+			<td align="right">First Name:*</td><td><input type="text" name="sFirstName"/></td>
+		</tr>
+		<tr>
+			<td align="right">Last Name:*</td><td><input type="text" name="sLastName"/></td>
+		</tr>
+		<tr>
+			<td align="right">Email:*</td><td><input type="text" name="sEmail"></td>
+		</tr>
+	</table>
+	
 	<br />
 	<br />
 
@@ -143,7 +156,7 @@ body {
 				<td><core:out value="${user.city}" /></td>
 				<td><core:out value="${user.email}" />
 				<td><input type="button" value="Edit" /></td>
-				<td><input type="button" value="Remove" /></td>
+				<td><input type="button" value="Remove" onclick="delete()"/></td>
 			</tr>
 		</core:forEach>
 	</table>
