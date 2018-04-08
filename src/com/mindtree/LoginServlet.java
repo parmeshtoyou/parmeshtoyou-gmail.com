@@ -1,6 +1,8 @@
 package com.mindtree;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,15 +30,13 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("uname");
 		String password = request.getParameter("psw");
-		response.getWriter().append("User Name: ").append(userName).append(" and Password:").append(password);
+		
+		if(userName.equals("Admin") && password.equals("Admin")) {
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/userlist.jsp");
+			dispatcher.forward(request, response);
+		} else {
+			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/error.jsp");
+			dispatcher.forward(request, response);
+		}
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
