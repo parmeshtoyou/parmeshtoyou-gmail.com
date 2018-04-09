@@ -54,6 +54,11 @@ body {
 </style>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+	function deleteRecord() {
+		
+	}
+</script>
 
 </head>
 <body>
@@ -156,7 +161,7 @@ body {
 				<td><core:out value="${user.city}" /></td>
 				<td><core:out value="${user.email}" />
 				<td><input type="button" value="Edit" /></td>
-				<td><input type="button" value="Remove" onclick="delete()"/></td>
+				<td><input type="button" value="Remove" onclick="deleteRecord()"/></td>
 			</tr>
 		</core:forEach>
 	</table>

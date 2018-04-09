@@ -146,7 +146,7 @@ span.psw {
 
   <div class="container" style="background-color:#f1f1f1">
     <button type="button" class="cancelbtn">Cancel</button>
-    <span class="psw">Don't Have an account? <a href="#">Create one</a></span>
+    <span class="psw">Don't Have an account? <a href="register.jsp">Create one</a></span>
     <br><br>
     <center><a href="home.html">Go back to the Home Page</a></center>
   </div>

@@ -23,17 +23,12 @@
 </style>
 
 <body>
-
 	<center>
 		<img src="images.png" alt="title image">
 	</center>
 
 	<form action="login_page.jsp">
-
 		<input type="submit" value="Login" class="button" />
-
 	</form>
-
-
 </body>
 </html>
