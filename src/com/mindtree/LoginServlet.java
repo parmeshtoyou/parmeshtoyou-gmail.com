@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mindtree.dao.LoginDAO;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -27,11 +29,13 @@ public class LoginServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userName = request.getParameter("uname");
 		String password = request.getParameter("psw");
 		
-		if(userName.equals("Admin") && password.equals("Admin")) {
+		System.out.println("do post of Login servlet");
+		
+		if(new LoginDAO().check(userName, password)) {
 			RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/userlist.jsp");
 			dispatcher.forward(request, response);
 		} else {
@@ -39,4 +43,5 @@ public class LoginServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}
 	}
+	
 }

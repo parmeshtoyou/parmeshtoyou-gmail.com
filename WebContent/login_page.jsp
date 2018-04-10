@@ -129,7 +129,7 @@ span.psw {
 </head>
 <body>
 
-<form action="LoginServlet" method="get">
+<form action="LoginServlet" method="post">
   <div class="imgcontainer">
     <img src="img_avatar2.png" alt="Avatar" class="avatar">
   </div>
