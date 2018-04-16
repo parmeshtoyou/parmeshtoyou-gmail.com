@@ -1,8 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@page import="com.mindtree.dao.UserDAO" %>
+<%@page import="com.mindtree.model.*"%>
+<%@page import="java.util.List"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
+
+
+
+<%
+	List<User> userList = UserDAO.findAll();
+	//UserDAO.findAll().toString()
+	request.setAttribute("userList", userList);
+%> 
+
 
 <html>
 <head>
@@ -53,10 +66,11 @@ body {
 }
 </style>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script>
 	function deleteRecord() {
-		
+
 	}
 </script>
 
@@ -73,16 +87,33 @@ body {
 		<div class="modal-content">
 			<span class="close">&times;</span>
 			<center>
-			<table>
-				<tr><td align="right">First Name:</td><td><input type="text" name="firstName" /></td></tr>
-				<tr><td align="right">Last Name:</td><td><input type="text" name="lastName" /></td></tr>
-				<tr><td align="right">State:</td><td><input type="text" name="state" /></td></tr>
-				<tr><td align="right">City:</td><td><input type="text" name="city" /></td></tr>
-				<tr><td align="right">Email:</td><td><input type="text" name="email" /></td></tr>
-			</table>
+				<table>
+					<tr>
+						<td align="right">First Name:</td>
+						<td><input type="text" name="firstName" /></td>
+					</tr>
+					<tr>
+						<td align="right">Last Name:</td>
+						<td><input type="text" name="lastName" /></td>
+					</tr>
+					<tr>
+						<td align="right">State:</td>
+						<td><input type="text" name="state" /></td>
+					</tr>
+					<tr>
+						<td align="right">City:</td>
+						<td><input type="text" name="city" /></td>
+					</tr>
+					<tr>
+						<td align="right">Email:</td>
+						<td><input type="text" name="email" /></td>
+					</tr>
+				</table>
 			</center>
-			<br/>	
-			<center><button type="submit">Save</button></center>
+			<br />
+			<center>
+				<button type="submit">Save</button>
+			</center>
 		</div>
 
 	</div>
@@ -119,23 +150,25 @@ body {
 		url="jdbc:mysql://localhost:3306/param" user="root"
 		password="Test@123" />
 	<sql:query var="rs" dataSource="${db}">select * from employee</sql:query>
-	<br/>
-	<br/>
-	User Search
+	<br />
+	<br /> User Search
 	<br />
 	<br />
 	<table>
 		<tr>
-			<td align="right">First Name:*</td><td><input type="text" name="sFirstName"/></td>
+			<td align="right">First Name:*</td>
+			<td><input type="text" name="sFirstName" /></td>
 		</tr>
 		<tr>
-			<td align="right">Last Name:*</td><td><input type="text" name="sLastName"/></td>
+			<td align="right">Last Name:*</td>
+			<td><input type="text" name="sLastName" /></td>
 		</tr>
 		<tr>
-			<td align="right">Email:*</td><td><input type="text" name="sEmail"></td>
+			<td align="right">Email:*</td>
+			<td><input type="text" name="sEmail"></td>
 		</tr>
 	</table>
-	
+
 	<br />
 	<br />
 
@@ -153,17 +186,30 @@ body {
 			<th>Remove</th>
 		</tr>
 
-		<core:forEach items="${rs.rows}" var="user">
+		<%-- 		<core:forEach items="${rs.rows}" var="user"> --%>
+		<!-- 			<tr> -->
+		<%-- 				<td><core:out value="${user.firstName}" /></td> --%>
+		<%-- 				<td><core:out value="${user.lastName}" /></td> --%>
+		<%-- 				<td><core:out value="${user.state}" /></td> --%>
+		<%-- 				<td><core:out value="${user.city}" /></td> --%>
+		<%-- 				<td><core:out value="${user.email}" /> --%>
+		<!-- 				<td><input type="button" value="Edit" /></td> -->
+		<%-- 				<td><a href="deleteuser.jsp?id=${user.email}">Delete</a></td> --%>
+		<!-- 			</tr> -->
+		<%-- 		</core:forEach> --%>
+
+		<core:forEach items="${userList}" var="list">
 			<tr>
-				<td><core:out value="${user.firstName}" /></td>
-				<td><core:out value="${user.lastName}" /></td>
-				<td><core:out value="${user.state}" /></td>
-				<td><core:out value="${user.city}" /></td>
-				<td><core:out value="${user.email}" />
+				<td><core:out value="${list.getFirstName()}" /></td>
+				<td><core:out value="${list.getLastName()}" /></td>
+				<td><core:out value="${list.getState()}" /></td>
+				<td><core:out value="${list.getCity()}" /></td>
+				<td><core:out value="${list.getEmail()}" />
 				<td><input type="button" value="Edit" /></td>
-				<td><input type="button" value="Remove" onclick="deleteRecord()"/></td>
+				<td><a href="deleteuser.jsp?emailId=${list.getEmail()}">Delete</a></td>
 			</tr>
 		</core:forEach>
+
 	</table>
 </body>
 </html>
