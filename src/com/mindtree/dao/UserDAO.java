@@ -68,9 +68,6 @@ public class UserDAO {
 		return status;
 	}
 	
-	public static int getValue() {
-		return 100;
-	}
 
 	public static List<User> findAll() {
 		List<User> list = new ArrayList<>();
@@ -98,28 +95,31 @@ public class UserDAO {
 		return list;
 	}
 
-//	public static User getRecordById(int id) {
-//		User user = null;
-//
-//		try {
-//			Connection con = SinlgetonConnection.getCon();
-//			PreparedStatement ps = con.prepareStatement("select * from emp where id=?");
-//			ps.setInt(1, id);
-//			ResultSet rs = ps.executeQuery();
-//			while (rs.next()) {
-//				user = new User();
-//				user.setName(rs.getString(1));
-//				user.setPassword(rs.getString(2));
-//				user.setEmail(rs.getString(3));
-//				user.setSex(rs.getString(4));
-//				user.setCountry(rs.getString(5));
-//
-//			}
-//
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//
-//		return user;
-//	}
+	public static User getRecordById(String emailId) {
+		User user = null;
+
+		try {
+			Connection con = SinlgetonConnection.getCon();
+			PreparedStatement ps = con.prepareStatement("select * from employee where email=?");
+			ps.setString(1, emailId);
+			ResultSet rs = ps.executeQuery();
+			
+			while (rs.next()) {
+				user = new User();
+				user.setFirstName(rs.getString(1));
+				user.setLastName(rs.getString(2));
+				user.setState(rs.getString(3));
+				user.setCity(rs.getString(4));
+				user.setEmail(rs.getString(5));
+				
+				System.out.println(user);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return user;
+	}
 }

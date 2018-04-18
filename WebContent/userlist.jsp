@@ -186,18 +186,6 @@ body {
 			<th>Remove</th>
 		</tr>
 
-		<%-- 		<core:forEach items="${rs.rows}" var="user"> --%>
-		<!-- 			<tr> -->
-		<%-- 				<td><core:out value="${user.firstName}" /></td> --%>
-		<%-- 				<td><core:out value="${user.lastName}" /></td> --%>
-		<%-- 				<td><core:out value="${user.state}" /></td> --%>
-		<%-- 				<td><core:out value="${user.city}" /></td> --%>
-		<%-- 				<td><core:out value="${user.email}" /> --%>
-		<!-- 				<td><input type="button" value="Edit" /></td> -->
-		<%-- 				<td><a href="deleteuser.jsp?id=${user.email}">Delete</a></td> --%>
-		<!-- 			</tr> -->
-		<%-- 		</core:forEach> --%>
-
 		<core:forEach items="${userList}" var="list">
 			<tr>
 				<td><core:out value="${list.getFirstName()}" /></td>
@@ -205,7 +193,7 @@ body {
 				<td><core:out value="${list.getState()}" /></td>
 				<td><core:out value="${list.getCity()}" /></td>
 				<td><core:out value="${list.getEmail()}" />
-				<td><input type="button" value="Edit" /></td>
+				<td><a href="updateuser.jsp?emailId=${list.getEmail()}">Update</a></td>
 				<td><a href="deleteuser.jsp?emailId=${list.getEmail()}">Delete</a></td>
 			</tr>
 		</core:forEach>
