@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@page import="com.mindtree.dao.UserDAO" %>
+<%@page import="com.mindtree.dao.UserDAO"%>
 <%@page import="com.mindtree.model.*"%>
 <%@page import="java.util.List"%>
 
@@ -8,13 +8,10 @@
 <%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
 
-
-
 <%
 	List<User> userList = UserDAO.findAll();
-	//UserDAO.findAll().toString()
 	request.setAttribute("userList", userList);
-%> 
+%>
 
 
 <html>
@@ -71,43 +68,47 @@ body {
 <body>
 
 	<!-- Trigger/Open The Modal -->
+	<form action="addUser"></form>
 	<button id="myBtn">Add User</button>
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
 
-		<!-- Modal content -->
-		<div class="modal-content">
-			<span class="close">&times;</span>
-			<center>
-				<table>
-					<tr>
-						<td align="right">First Name:</td>
-						<td><input type="text" name="firstName" /></td>
-					</tr>
-					<tr>
-						<td align="right">Last Name:</td>
-						<td><input type="text" name="lastName" /></td>
-					</tr>
-					<tr>
-						<td align="right">State:</td>
-						<td><input type="text" name="state" /></td>
-					</tr>
-					<tr>
-						<td align="right">City:</td>
-						<td><input type="text" name="city" /></td>
-					</tr>
-					<tr>
-						<td align="right">Email:</td>
-						<td><input type="text" name="email" /></td>
-					</tr>
-				</table>
-			</center>
-			<br />
-			<center>
-				<button type="submit">Save</button>
-			</center>
-		</div>
+		<form action="AddUserServlet" method="post">
+
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<center>
+					<table>
+						<tr>
+							<td align="right">First Name:</td>
+							<td><input type="text" name="firstName" /></td>
+						</tr>
+						<tr>
+							<td align="right">Last Name:</td>
+							<td><input type="text" name="lastName" /></td>
+						</tr>
+						<tr>
+							<td align="right">State:</td>
+							<td><input type="text" name="state" /></td>
+						</tr>
+						<tr>
+							<td align="right">City:</td>
+							<td><input type="text" name="city" /></td>
+						</tr>
+						<tr>
+							<td align="right">Email:</td>
+							<td><input type="text" name="email" /></td>
+						</tr>
+					</table>
+				</center>
+				<br />
+				<center>
+					<button type="submit">Save</button>
+				</center>
+			</div>
+		</form>
 
 	</div>
 
