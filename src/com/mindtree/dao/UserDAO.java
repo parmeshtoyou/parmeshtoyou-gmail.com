@@ -99,6 +99,34 @@ public class UserDAO {
 		return list;
 	}
 
+	public static List<User> searchUser(String firstName, String lastName, String email) {
+		List<User> list = new ArrayList<>();
+
+		try {
+			Connection con = SinlgetonConnection.getCon();
+			PreparedStatement ps = con.prepareStatement(
+					"select * from employee where email='" + email + "' or firstName='" + firstName + "'");
+			ResultSet rs = ps.executeQuery();
+			while (rs.next()) {
+				User user = new User();
+				user.setFirstName(rs.getString(1));
+				user.setLastName(rs.getString(2));
+				user.setState(rs.getString(3));
+				user.setCity(rs.getString(4));
+				user.setEmail(rs.getString(5));
+
+				list.add(user);
+			}
+
+			System.out.println("search result:" + list);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
 	public static User getRecordById(String emailId) {
 		User user = null;
 

@@ -9,7 +9,7 @@ body {font-family: Arial, Helvetica, sans-serif;}
 
 /* Full-width input fields */
 input[type=text], input[type=password] {
-    width: 100%;
+    width: 50%;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -25,7 +25,7 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 30%;
 }
 
 button:hover {
@@ -67,7 +67,7 @@ span.psw {
     z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
+    width: 50%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
@@ -122,7 +122,7 @@ span.psw {
        float: none;
     }
     .cancelbtn {
-       width: 100%;
+       width: 50%;
     }
 }
 </style>
@@ -134,21 +134,20 @@ span.psw {
     <img src="img_avatar2.png" alt="Avatar" class="avatar">
   </div>
 
-  <div class="container">
+  <div class="container" align="center">
     <label for="uname"><b>User Name</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+    <input type="text" placeholder="Enter Username" name="uname" required width="50%">
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
+    <br/><label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required width="50%">
 
-    <button type="submit">Login</button>
+    <br/><button type="submit">Login</button>
   </div>
 
   <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancel</button>
     <span class="psw">Don't Have an account? <a href="register.jsp">Create one</a></span>
     <br><br>
-    <center><a href="home.html">Go back to the Home Page</a></center>
+    <center><a href="home.jsp">Go back to the Home Page</a></center>
   </div>
 </form>
 

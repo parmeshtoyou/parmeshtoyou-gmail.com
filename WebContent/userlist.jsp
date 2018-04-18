@@ -68,8 +68,7 @@ body {
 <body>
 
 	<!-- Trigger/Open The Modal -->
-	<form action="addUser"></form>
-	<button id="myBtn">Add User</button>
+	<button id="myBtn">Add User</button>        <a href="home.jsp">Logout</a>
 
 	<!-- The Modal -->
 	<div id="myModal" class="modal">
@@ -83,23 +82,23 @@ body {
 					<table>
 						<tr>
 							<td align="right">First Name:</td>
-							<td><input type="text" name="firstName" /></td>
+							<td><input type="text" name="firstName" required /></td>
 						</tr>
 						<tr>
 							<td align="right">Last Name:</td>
-							<td><input type="text" name="lastName" /></td>
+							<td><input type="text" name="lastName" required /></td>
 						</tr>
 						<tr>
 							<td align="right">State:</td>
-							<td><input type="text" name="state" /></td>
+							<td><input type="text" name="state" required /></td>
 						</tr>
 						<tr>
 							<td align="right">City:</td>
-							<td><input type="text" name="city" /></td>
+							<td><input type="text" name="city" required /></td>
 						</tr>
 						<tr>
 							<td align="right">Email:</td>
-							<td><input type="text" name="email" /></td>
+							<td><input type="text" name="email" required/></td>
 						</tr>
 					</table>
 				</center>
@@ -148,28 +147,32 @@ body {
 	<br /> User Search
 	<br />
 	<br />
-	<table>
-		<tr>
-			<td align="right">First Name:*</td>
-			<td><input type="text" name="sFirstName" /></td>
-		</tr>
-		<tr>
-			<td align="right">Last Name:*</td>
-			<td><input type="text" name="sLastName" /></td>
-		</tr>
-		<tr>
-			<td align="right">Email:*</td>
-			<td><input type="text" name="sEmail"></td>
-		</tr>
-	</table>
 
-	<br />
-	<br />
+	<form action="SearchServlet" method="post">
+		<table>
+			<tr>
+				<td align="right">First Name:*</td>
+				<td><input type="text" name="sFirstName" /></td>
+			</tr>
+			<tr>
+				<td align="right">Last Name:*</td>
+				<td><input type="text" name="sLastName" /></td>
+			</tr>
+			<tr>
+				<td align="right">Email:*</td>
+				<td><input type="text" name="sEmail"></td>
+			</tr>
+		</table>
+		<br />
+		
+		<button type="submit">Search</button> <button type="reset">Reset</button>
+		
+	</form>
+	
+	<br /><br />
 
-	<table>
-	</table>
+
 	<table border="1">
-		<!-- here should go some titles... -->
 		<tr bgcolor="gray">
 			<th>First Name</th>
 			<th>Last Name</th>
@@ -191,7 +194,6 @@ body {
 				<td><a href="deleteuser.jsp?emailId=${list.getEmail()}">Delete</a></td>
 			</tr>
 		</core:forEach>
-
 	</table>
 </body>
 </html>
