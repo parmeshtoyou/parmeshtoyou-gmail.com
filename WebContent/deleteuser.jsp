@@ -4,5 +4,6 @@
 
 <%
 	int i = UserDAO.delete(request.getParameter("emailId"));
-	response.sendRedirect("userlist.jsp");
+	if(i > 0)
+		response.sendRedirect("userlist.jsp");
 %>

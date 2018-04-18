@@ -35,14 +35,19 @@ public class UserDAO {
 
 		try {
 			Connection con = SinlgetonConnection.getCon();
+
 			PreparedStatement ps = con.prepareStatement(
 					"update employee set firstName=?,lastName=?,state=?,city=?,email=? where email=?");
+
 			ps.setString(1, user.getFirstName());
 			ps.setString(2, user.getLastName());
 			ps.setString(3, user.getState());
 			ps.setString(4, user.getCity());
 			ps.setString(5, user.getEmail());
+			ps.setString(6, user.getEmail());
 			status = ps.executeUpdate();
+
+			System.out.println("status:" + status);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -67,7 +72,6 @@ public class UserDAO {
 
 		return status;
 	}
-	
 
 	public static List<User> findAll() {
 		List<User> list = new ArrayList<>();
@@ -83,7 +87,7 @@ public class UserDAO {
 				user.setState(rs.getString(3));
 				user.setCity(rs.getString(4));
 				user.setEmail(rs.getString(5));
-				
+
 				list.add(user);
 
 			}
@@ -103,7 +107,7 @@ public class UserDAO {
 			PreparedStatement ps = con.prepareStatement("select * from employee where email=?");
 			ps.setString(1, emailId);
 			ResultSet rs = ps.executeQuery();
-			
+
 			while (rs.next()) {
 				user = new User();
 				user.setFirstName(rs.getString(1));
@@ -111,7 +115,7 @@ public class UserDAO {
 				user.setState(rs.getString(3));
 				user.setCity(rs.getString(4));
 				user.setEmail(rs.getString(5));
-				
+
 				System.out.println(user);
 
 			}

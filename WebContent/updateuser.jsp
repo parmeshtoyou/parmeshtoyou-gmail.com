@@ -16,7 +16,7 @@
 <title>Update User</title>
 </head>
 <body>
-	<form action="UpdateServlet" method="get">
+	<form action="UpdateServlet" method="post">
 		<table border="1">
 			<tr>
 				<td align="right">First Name:</td>
@@ -41,7 +41,7 @@
 				<td><input type="text" value=<%=user.getEmail()%> name="email"></td>
 			</tr>
 			<tr>
-				<td><button type="submit">Login</button></td>
+				<td><button type="submit">Update</button></td>
 			</tr>
 		</table>
 	</form>

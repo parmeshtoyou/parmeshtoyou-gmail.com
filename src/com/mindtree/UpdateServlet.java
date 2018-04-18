@@ -39,32 +39,10 @@ public class UpdateServlet extends HttpServlet {
 		System.out.println(user.toString());
 		
 		int status = UserDAO.update(user);
-		if (status == 0) {
-			System.out.println("Could not update user");
-		} else {
-			System.out.println("User updated successfully");
-		}
-	}
-	
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		User user = new User();
-		user.setFirstName(request.getParameter("firstName"));
-		user.setLastName(request.getParameter("lastName"));
-		user.setState(request.getParameter("state"));
-		user.setCity(request.getParameter("city"));
-		user.setEmail(request.getParameter("email"));
+		System.out.println("status:"+status);
 		
-		System.out.println(user.toString());
-		
-		int status = UserDAO.update(user);
-		if (status == 0) {
-			System.out.println("Could not update user");
-		} else {
-			System.out.println("User updated successfully");
-		}
+		if(status > 0)
+			response.sendRedirect("userlist.jsp");
 	}
 
 }
